@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Disney",
+    "logo": "https://i.ibb.co/Hh0VTD4/disney5456-removebg-preview.png",
+    "industry": "Media and entertainment",
+    "headquarters": "Burbank, California, United States",
+    "founded": 1923,
+    "website": "https://www.disney.com/"
+  },
+  {
+    "id": 2,
+    "name": "Netflix",
+    "logo": "https://i.ibb.co/xMMF8Tt/netflix-logo-png-large.png",
+    "industry": "Technology, media and entertainment",
+    "headquarters": "Los Gatos, California, United States",
+    "founded": 1997,
+    "website": "https://www.netflix.com/"
+  },
+  {
+    "id": 3,
+    "name": "Warner Bros.",
+    "logo": "https://i.ibb.co/LZwLPkC/Warner-Bros-logo-1-B27-F81742-seeklogo-com.png",
+    "industry": "Media and entertainment",
+    "headquarters": "Burbank, California, United States",
+    "founded": 1923,
+    "website": "https://www.warnerbros.com/"
+  },
+  {
+    "id": 4,
+    "name": "Sony Pictures",
+    "logo": "https://i.ibb.co/XxvB2J6/Sony-Pictures-logo-500x281.png",
+    "industry": "Media and entertainment",
+    "headquarters": "Culver City, California, United States",
+    "founded": 1924,
+    "website": "https://www.sonypictures.com/"
+  },
+  {
+    "id": 5,
+    "name": "Spotify",
+    "logo": "https://i.ibb.co/fvFhtDZ/png-transparent-spotify-podcast-spotify-logo-text-logo-music-download-thumbnail-removebg-preview.png",
+    "industry": "Technology, media and entertainment",
+    "headquarters": "Stockholm, Sweden",
+    "founded": 2006,
+    "website": "https://www.spotify.com/"
+  },
+  {
+    "id": 6,
+    "name": "Time Warner",
+    "logo": "https://i.ibb.co/yn8Kqzx/time-warner-logo.png",
+    "industry": "Media and entertainment",
+    "headquarters": "New York City, New York, United States",
+    "founded": 1970,
+    "website": "https://www.timewarner.com/"
+  }
+]
