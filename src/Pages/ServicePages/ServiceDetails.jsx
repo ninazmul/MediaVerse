@@ -1,8 +1,8 @@
 
 const ServiceDetails = () => {
     return (
-        <div>
-            <h1>details</h1>
+        <div className="pt-16">
+            <h1>service details</h1>
         </div>
     );
 };

@@ -5,12 +5,28 @@ const Navbar = () => {
 
     const navBtn = (
       <>
-        <div className="font-bold text-xl space-x-2">
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/services'>Services</NavLink>
+        <div className="font-bold text-xl space-x-2 ">
+          <NavLink className="hover:text-red-500" to="/">
+            Home
+          </NavLink>
+          <NavLink className="hover:text-red-500" to="/addmovie">
+            Add Movie
+          </NavLink>
         </div>
       </>
     );
+  const navBtn2 = (
+    <>
+      <div className="flex flex-col space-y-2">
+        <NavLink className="hover:text-red-500" to="/profile">
+          Profile
+        </NavLink>
+        <NavLink className="hover:text-red-500" to="/signIn">
+          SignIn
+        </NavLink>
+      </div>
+    </>
+  );
     return (
       <div>
         <div className="navbar fixed mx-auto max-w-7xl">
@@ -64,20 +80,21 @@ const Navbar = () => {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  <span className="badge badge-sm indicator-item">8</span>
+                  <span className="badge badge-sm indicator-item text-red-500">
+                    8
+                  </span>
                 </div>
               </label>
               <div
                 tabIndex={0}
                 className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
               >
-                <div className="card-body">
+                <div className="card-body glass rounded-2xl">
                   <span className="font-bold text-lg">8 Items</span>
-                  <span className="text-info">Subtotal: $999</span>
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
+                    <NavLink className="btn bg-red-500 btn-block text-white" to="/cart">
                       View cart
-                    </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>
@@ -90,19 +107,12 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow glass rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
+                  <NavLink to="/signin">
+                    {navBtn2}
+                  </NavLink>
                 </li>
               </ul>
             </div>

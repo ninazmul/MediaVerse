@@ -1,5 +1,6 @@
 
-const SonyPic = () => {
+
+const AddMovie = () => {
     return (
         <div>
             
@@ -7,4 +8,4 @@ const SonyPic = () => {
     );
 };
 
-export default SonyPic;
+export default AddMovie;

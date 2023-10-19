@@ -1,6 +1,5 @@
 
-
-const Netflix = () => {
+const UpdateMovie = () => {
     return (
         <div>
             
@@ -8,4 +7,4 @@ const Netflix = () => {
     );
 };
 
-export default Netflix;
+export default UpdateMovie;
