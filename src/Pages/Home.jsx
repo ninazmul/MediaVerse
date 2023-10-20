@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 import Header from "./Header/Header";
 import Services from "./Services";
-
-
+import Marquee from "react-fast-marquee";
+import Marq from "./Marq";
 const Home = () => {
 
     
@@ -30,6 +30,14 @@ const Home = () => {
               </Link>
             </p>
           </div>
+        </div>
+        <div>
+          <h1 className="text-4xl font-bold text-red-500 text-center p-4">
+            Our sponsors
+                </h1>
+                <Marquee>
+                    <Marq></Marq>
+                </Marquee>
         </div>
       </div>
     );

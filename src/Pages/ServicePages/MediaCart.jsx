@@ -4,42 +4,47 @@ import {
   AiOutlineShoppingCart,
   AiFillDelete,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-const MediaCart = ({ media }) => {
-    const { _id, name, photo, brand, type, price, description, rating } = media;
-    
-    const handleDelete = _id => {
-        console.log(_id);
-        Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
-              
-              fetch(`http://localhost:3000/media/${_id}`, {
-                  method: 'DELETE'
-              })
-                  .then(res => res.json())
-                  .then(data => {
-                      console.log(data);
-                      if (data.deletedCount > 0) {
-                          Swal.fire(
-                            "Deleted!",
-                            "Your media has been deleted.",
-                            "success"
-                          );
-                      }
-              })
-          }
-        });
-    }
+const MediaCart = ({ media, medias, setMedia }) => {
+  const { _id, name, photo, brand, type, price, description, rating } = media;
+
+  const navigate = useNavigate();
+
+  const handleLearnMoreClick = () => {
+    navigate(`/media/${_id}`);
+  };
+
+  const handleDelete = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/media/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your media has been deleted.", "success");
+
+              const remaining = medias.filter((med) => med._id !== _id);
+              setMedia(remaining);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <div className="card w-96 h-96 glass">
@@ -54,19 +59,15 @@ const MediaCart = ({ media }) => {
               <h2 className="card-title text-red-500">{name}</h2>
             </div>
             <div className="flex text-red-500 text-2xl">
-              <Link to={`/updatemovie/${_id}`}>
-                <span>
-                  {" "}
-                  <AiFillEdit></AiFillEdit>{" "}
-                </span>
-              </Link>
+              <span onClick={() => handleLearnMoreClick()}>
+                <AiFillEdit></AiFillEdit>
+              </span>
               <button onClick={() => handleDelete(_id)}>
                 <span>
                   <AiFillDelete></AiFillDelete>
                 </span>
               </button>
-
-              <span className="text-2xl text-red-500 ">
+              <span className="text-2xl text-red-500">
                 <AiOutlineShoppingCart></AiOutlineShoppingCart>
               </span>
             </div>
@@ -82,10 +83,12 @@ const MediaCart = ({ media }) => {
             <span>{type}</span>
             <span className="text-xl font-bold gap-1">$ {price}</span>
           </p>
-
           <p>{description.slice(0, 35)}...</p>
           <div className="card-actions justify-end">
-            <button className="btn bg-red-500 text-white text-xl w-full">
+            <button
+              onClick={() => handleLearnMoreClick()}
+              className="btn bg-red-500 text-white text-xl w-full"
+            >
               Learn more!
             </button>
           </div>

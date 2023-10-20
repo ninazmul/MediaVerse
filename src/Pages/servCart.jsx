@@ -16,7 +16,7 @@ const ServiceCart = ({ service }) => {
               <h2 className="card-title text-red-500">{name}</h2>
               <p>{industry}</p>
               <div className="card-actions justify-end">
-                <Link className="w-full" to={`/services/${id}`}>
+                <Link className="w-full" to={`/media/${id}`}>
                   <p className="btn bg-red-500 w-full text-white">
                     See More!
                   </p>

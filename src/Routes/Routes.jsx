@@ -9,12 +9,15 @@ import SignIn from "../Pages/LogReg/SignIn";
 import CartItems from "../Pages/Header/CartItems";
 import PrivateRoute from "./PrivateRoute";
 import About from "../Pages/About";
-
+import Media from "../Pages/Media";
+import Marq from "../Pages/Marq";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -30,6 +33,14 @@ const Routes = createBrowserRouter([
         ),
 
         loader: () => fetch("http://localhost:3000/media"),
+      },
+      {
+        path: "/marq",
+        element: <Marq></Marq>
+      },
+      {
+        path: "/media/:id",
+        element: <PrivateRoute><Media></Media></PrivateRoute>
       },
       {
         path: "/updatemovie/:id",
