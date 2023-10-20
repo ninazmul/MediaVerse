@@ -31,7 +31,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/updatemovie",
-        element: <UpdateMovie></UpdateMovie>,
+        element: (
+          <PrivateRoute>
+            <UpdateMovie></UpdateMovie>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addmovie",
@@ -56,12 +60,11 @@ const Routes = createBrowserRouter([
             <CartItems></CartItems>
           </PrivateRoute>
         ),
-
       },
       {
         path: "/about",
-        element: <About></About>
-    }
+        element: <About></About>,
+      },
     ],
   },
 ]);
