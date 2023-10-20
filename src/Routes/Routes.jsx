@@ -7,6 +7,8 @@ import AddMovie from "../Pages/MovieAddUP/AddMovie";
 import SignUp from "../Pages/LogReg/SignUp";
 import SignIn from "../Pages/LogReg/SignIn";
 import CartItems from "../Pages/Header/CartItems";
+import PrivateRoute from "./PrivateRoute";
+import About from "../Pages/About";
 
 
 const Routes = createBrowserRouter([
@@ -16,33 +18,50 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/",
-            element: <Home></Home>,
-        loader: ()=> fetch('/data.json')
+        element: <Home></Home>,
+        loader: () => fetch("/data.json"),
       },
-        {
-            path: "/services/:id",
-            element: <ServiceDetails></ServiceDetails>
+      {
+        path: "/services/:id",
+        element: (
+          <PrivateRoute>
+            <ServiceDetails></ServiceDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updatemovie",
-        element: <UpdateMovie></UpdateMovie>
+        element: <UpdateMovie></UpdateMovie>,
       },
       {
         path: "/addmovie",
-        element: <AddMovie></AddMovie>
+        element: (
+          <PrivateRoute>
+            <AddMovie></AddMovie>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/signup",
-        element: <SignUp></SignUp>
+        element: <SignUp></SignUp>,
       },
       {
         path: "/signin",
-        element: <SignIn></SignIn>
+        element: <SignIn></SignIn>,
       },
       {
         path: "/cart",
-        element: <CartItems></CartItems>
-      }
+        element: (
+          <PrivateRoute>
+            <CartItems></CartItems>
+          </PrivateRoute>
+        ),
+
+      },
+      {
+        path: "/about",
+        element: <About></About>
+    }
     ],
   },
 ]);

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -19,9 +20,11 @@ const Header = () => {
               <p className="mb-5 text-white">
                 Your one-stop shop for entertainment and media news
               </p>
-              <button className="btn bg-red-500 text-white border-none">
-                Get Started
-              </button>
+              <Link to="signin">
+                <p className="btn bg-red-500 text-white border-none">
+                  Get Started
+                </p>
+              </Link>
             </div>
           </div>
         </div>

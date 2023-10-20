@@ -1,7 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Navbar = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleSignUp = () => {
+    logOut()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
     const navBtn = (
       <>
@@ -10,23 +24,15 @@ const Navbar = () => {
             Home
           </NavLink>
           <NavLink className="hover:text-red-500" to="/addmovie">
-            Add Movie
+            Add Media
+          </NavLink>
+          <NavLink className="hover:text-red-500" to="/about">
+            About Us
           </NavLink>
         </div>
       </>
     );
-  const navBtn2 = (
-    <>
-      <div className="flex flex-col space-y-2">
-        <NavLink className="hover:text-red-500" to="/profile">
-          Profile
-        </NavLink>
-        <NavLink className="hover:text-red-500" to="/signIn">
-          SignIn
-        </NavLink>
-      </div>
-    </>
-  );
+ 
     return (
       <div>
         <div className="navbar fixed mx-auto max-w-7xl">
@@ -55,9 +61,11 @@ const Navbar = () => {
                 {navBtn}
               </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">
-              Media<span className="text-red-500">Verse</span>
-            </a>
+            <Link to="/">
+              <a className="btn btn-ghost normal-case text-xl">
+                Media<span className="text-red-500">Verse</span>
+              </a>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navBtn}</ul>
@@ -92,7 +100,10 @@ const Navbar = () => {
                 <div className="card-body glass rounded-2xl">
                   <span className="font-bold text-lg">8 Items</span>
                   <div className="card-actions">
-                    <NavLink className="btn bg-red-500 btn-block text-white" to="/cart">
+                    <NavLink
+                      className="btn bg-red-500 btn-block text-white"
+                      to="/cart"
+                    >
                       View cart
                     </NavLink>
                   </div>
@@ -110,9 +121,23 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow glass rounded-box w-52"
               >
                 <li>
-                  <NavLink to="/signin">
-                    {navBtn2}
+                  <NavLink to="/profile" className="hover:text-red-500">
+                    Profile
                   </NavLink>
+                </li>
+                <li>
+                  {user ? (
+                    <NavLink
+                      onClick={handleSignUp}
+                      className="hover:text-red-500"
+                    >
+                      SignOut
+                    </NavLink>
+                  ) : (
+                    <NavLink to="/signin" className="hover:text-red-500">
+                      SignIn
+                    </NavLink>
+                  )}
                 </li>
               </ul>
             </div>
