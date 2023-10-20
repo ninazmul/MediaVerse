@@ -23,20 +23,22 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        element: 
+        element: (
           <PrivateRoute>
             <ServiceDetails></ServiceDetails>
-          </PrivateRoute>,
-        
+          </PrivateRoute>
+        ),
+
         loader: () => fetch("http://localhost:3000/media"),
       },
       {
-        path: "/updatemovie",
+        path: "/updatemovie/:id",
         element: (
           <PrivateRoute>
             <UpdateMovie></UpdateMovie>
           </PrivateRoute>
         ),
+        loader: ({params}) => fetch(`http://localhost:3000/media/${params.id}`),
       },
       {
         path: "/addmovie",

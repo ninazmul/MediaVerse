@@ -4,6 +4,7 @@ import {
   AiOutlineShoppingCart,
   AiFillDelete,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MediaCart = ({ media }) => {
@@ -53,10 +54,12 @@ const MediaCart = ({ media }) => {
               <h2 className="card-title text-red-500">{name}</h2>
             </div>
             <div className="flex text-red-500 text-2xl">
-              <span>
-                {" "}
-                <AiFillEdit></AiFillEdit>{" "}
-              </span>
+              <Link to={`/updatemovie/${_id}`}>
+                <span>
+                  {" "}
+                  <AiFillEdit></AiFillEdit>{" "}
+                </span>
+              </Link>
               <button onClick={() => handleDelete(_id)}>
                 <span>
                   <AiFillDelete></AiFillDelete>
