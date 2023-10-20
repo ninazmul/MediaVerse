@@ -1,19 +1,72 @@
-import { AiFillStar, AiFillEdit } from "react-icons/ai";
+import {
+  AiFillStar,
+  AiFillEdit,
+  AiOutlineShoppingCart,
+  AiFillDelete,
+} from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const MediaCart = ({ media }) => {
-  const { name, photo, brand, type, price, description, rating } = media;
+    const { _id, name, photo, brand, type, price, description, rating } = media;
+    
+    const handleDelete = _id => {
+        console.log(_id);
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+              
+              fetch(`http://localhost:3000/media/${_id}`, {
+                  method: 'DELETE'
+              })
+                  .then(res => res.json())
+                  .then(data => {
+                      console.log(data);
+                      if (data.deletedCount > 0) {
+                          Swal.fire(
+                            "Deleted!",
+                            "Your media has been deleted.",
+                            "success"
+                          );
+                      }
+              })
+          }
+        });
+    }
   return (
     <div>
       <div className="card w-96 h-96 glass">
         <figure>
-          <img src={photo} alt="car!" />
+          <div className="">
+            <img src={photo} alt="car!" />
+          </div>
         </figure>
         <div className="card-body">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="card-title text-red-500">{media.name}</h2>
+              <h2 className="card-title text-red-500">{name}</h2>
             </div>
-            <div className="text-red-500 text-2xl"><AiFillEdit></AiFillEdit></div>
+            <div className="flex text-red-500 text-2xl">
+              <span>
+                {" "}
+                <AiFillEdit></AiFillEdit>{" "}
+              </span>
+              <button onClick={() => handleDelete(_id)}>
+                <span>
+                  <AiFillDelete></AiFillDelete>
+                </span>
+              </button>
+
+              <span className="text-2xl text-red-500 ">
+                <AiOutlineShoppingCart></AiOutlineShoppingCart>
+              </span>
+            </div>
           </div>
           <p className="flex justify-between items-center">
             <span>{brand}</span>
