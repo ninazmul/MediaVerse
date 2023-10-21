@@ -1,11 +1,6 @@
-import {
-  AiFillStar,
-  AiFillEdit,
-  AiOutlineShoppingCart,
-  AiFillDelete,
-} from "react-icons/ai";
+import { AiFillStar, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MediaCart = ({ media, medias, setMedias }) => {
   const { _id, name, photo, brand, type, price, description, rating } = media;
@@ -27,7 +22,7 @@ const MediaCart = ({ media, medias, setMedias }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/media/${_id}`, {
+        fetch(`https://mediaverse-website-server.vercel.app/media/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -52,7 +47,7 @@ const MediaCart = ({ media, medias, setMedias }) => {
       <div className="card w-96 h-96 glass">
         <figure>
           <div className="">
-            <img src={photo} alt="media" />
+            <img className="w-full" src={photo} alt="media" />
           </div>
         </figure>
         <div className="card-body">
@@ -61,15 +56,14 @@ const MediaCart = ({ media, medias, setMedias }) => {
               <h2 className="card-title text-red-500">{name}</h2>
             </div>
             <div className="flex text-red-500 text-2xl">
-              <span onClick={() => handleLearnMoreClick()}>
+              <Link to={`/updatemovie/${_id}`}>
                 <AiFillEdit />
-              </span>
+              </Link>
               <button onClick={handleDelete}>
                 <span>
                   <AiFillDelete />
                 </span>
               </button>
-              
             </div>
           </div>
           <p className="flex justify-between items-center">

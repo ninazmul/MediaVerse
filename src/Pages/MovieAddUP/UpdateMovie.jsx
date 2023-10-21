@@ -27,7 +27,7 @@ const UpdateMovie = () => {
       description,
       rating,
     };
-    fetch(`http://localhost:5000/media/${_id}`, {
+    fetch(`https://mediaverse-website-server.vercel.app/media/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -176,7 +176,7 @@ const UpdateMovie = () => {
                     <input
                       className="btn bg-red-500 text-white text-xl"
                       type="submit"
-                      value="Add Media"
+                      value="Update Media"
                     />
                   </div>
                 </form>

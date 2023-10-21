@@ -15,7 +15,7 @@ const AddMovie = () => {
 
     const newMedia = { name, photo, brand, type, price, description, rating };
 
-    fetch("http://localhost:5000/media", {
+    fetch("https://mediaverse-website-server.vercel.app/media", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -37,12 +37,14 @@ const AddMovie = () => {
   };
 
   return (
-    <div>
+    <div className="pt-16">
       <div>
         <div className="hero min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">
-              <h1 className="text-5xl font-bold text-red-500">Add Media!</h1>
+              <h1 className="text-2xl  lg:text-5xl font-bold text-red-500">
+                Add Media!
+              </h1>
               <p className="py-6">
                 The "Add Media" form is a user-friendly tool that allows you to
                 effortlessly upload and integrate multimedia content into your

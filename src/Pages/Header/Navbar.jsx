@@ -23,9 +23,6 @@ const Navbar = () => {
           <NavLink className="hover:text-red-500" to="/">
             Home
           </NavLink>
-          <NavLink className="hover:text-red-500" to="/services/id">
-            All Media
-          </NavLink>
           <NavLink className="hover:text-red-500" to="/addmovie">
             Add Media
           </NavLink>
@@ -38,7 +35,10 @@ const Navbar = () => {
  
     return (
       <div>
-        <div className="navbar fixed mx-auto max-w-7xl">
+        <div
+          className="navbar fixed mx-auto lg:max-w-7xl"
+          style={{ zIndex: 100 }}
+        >
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -65,7 +65,7 @@ const Navbar = () => {
               </ul>
             </div>
             <Link to="/">
-              <a className="btn btn-ghost normal-case text-xl">
+              <a className="font-bold flex items-center gap-1 text-xl">
                 Media<span className="text-red-500">Verse</span>
               </a>
             </Link>

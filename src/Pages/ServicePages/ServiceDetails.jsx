@@ -15,12 +15,12 @@ const ServiceDetails = () => {
 
   return (
     <div className="pt-16">
-      <h1 className="text-4xl font-bold text-red-500 text-center p-4">
+      <h1 className="text-2xl lg:text-4xl font-bold text-red-500 text-center p-4">
         All Available Media for Brand: {brand}
       </h1>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredMedia.length === 0 ? (
-          <p className="text-7xl text-yellow-500 text-center col-span-3 py-8">
+          <p className="text-7xl text-yellow-500 text-center lg:col-span-3 py-8">
             No items available for this brand!
           </p>
         ) : (

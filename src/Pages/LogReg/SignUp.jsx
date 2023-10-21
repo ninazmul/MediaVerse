@@ -56,7 +56,7 @@ const SignUp = () => {
           email,
           createdAt: createdAt,
         };
-        fetch("http://localhost:5000/user", {
+        fetch("https://mediaverse-website-server.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -117,10 +117,12 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="hero min-h-screen">
+      <div className="hero min-h-screen pt-16">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">SignUp now!</h1>
+            <h1 className="text-2xl text-red-500 lg:text-5xl font-bold">
+              SignUp now!
+            </h1>
             <p className="py-6">
               If you're new to{" "}
               <span className="font-bold">

@@ -32,7 +32,8 @@ const Routes = createBrowserRouter([
           </PrivateRoute>
         ),
 
-        loader: () => fetch("http://localhost:5000/media"),
+        loader: () =>
+          fetch("https://mediaverse-website-server.vercel.app/media"),
       },
       {
         path: "/marq",
@@ -54,7 +55,9 @@ const Routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/media/${params.id}`),
+          fetch(
+            `https://mediaverse-website-server.vercel.app/media/${params.id}`
+          ),
       },
       {
         path: "/addmovie",
