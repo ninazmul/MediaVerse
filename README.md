@@ -8,7 +8,8 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # b8a10-brandshop-client-side-ninazmul
 
-# Features:
+# Features: 
+# Live: https://media-verse.web.app/
 
 # Media Catalog: 
 
