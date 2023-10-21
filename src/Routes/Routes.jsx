@@ -25,22 +25,26 @@ const Routes = createBrowserRouter([
         loader: () => fetch("/data.json"),
       },
       {
-        path: "/services/:id",
+        path: "/services/:brand",
         element: (
           <PrivateRoute>
             <ServiceDetails></ServiceDetails>
           </PrivateRoute>
         ),
 
-        loader: () => fetch("http://localhost:3000/media"),
+        loader: () => fetch("http://localhost:5000/media"),
       },
       {
         path: "/marq",
-        element: <Marq></Marq>
+        element: <Marq></Marq>,
       },
       {
         path: "/media/:id",
-        element: <PrivateRoute><Media></Media></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <Media></Media>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updatemovie/:id",
@@ -49,7 +53,8 @@ const Routes = createBrowserRouter([
             <UpdateMovie></UpdateMovie>
           </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`http://localhost:3000/media/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/media/${params.id}`),
       },
       {
         path: "/addmovie",
@@ -83,4 +88,4 @@ const Routes = createBrowserRouter([
   },
 ]);
 
-export default Routes
+export default Routes;

@@ -116,23 +116,29 @@ const SignIn = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input
-                    name="password"
-                    type={show ? "text" : "password"}
-                    placeholder="password"
-                    className="input input-bordered"
-                    required
-                  />
-                  <span
-                    className="right-2 top-2.5 absolute"
-                    onClick={() => setShow(!show)}
-                  >
-                    {show ? (
-                      <AiFillEye className="text-2xl text-black"></AiFillEye>
-                    ) : (
-                      <AiFillEyeInvisible className="text-2xl text-black"></AiFillEyeInvisible>
-                    )}
-                  </span>
+                  <div className="flex relative">
+                    <div>
+                      <input
+                        name="password"
+                        type={show ? "text" : "password"}
+                        placeholder="password"
+                        className="input input-bordered w-80"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <span
+                        className="right-2 top-2.5 absolute"
+                        onClick={() => setShow(!show)}
+                      >
+                        {show ? (
+                          <AiFillEye className="text-2xl text-black"></AiFillEye>
+                        ) : (
+                          <AiFillEyeInvisible className="text-2xl text-black"></AiFillEyeInvisible>
+                        )}
+                      </span>
+                    </div>
+                  </div>
                 </div>
                 <div className="form-control mt-6">
                   <input

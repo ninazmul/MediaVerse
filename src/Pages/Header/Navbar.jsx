@@ -23,6 +23,9 @@ const Navbar = () => {
           <NavLink className="hover:text-red-500" to="/">
             Home
           </NavLink>
+          <NavLink className="hover:text-red-500" to="/services/id">
+            All Media
+          </NavLink>
           <NavLink className="hover:text-red-500" to="/addmovie">
             Add Media
           </NavLink>

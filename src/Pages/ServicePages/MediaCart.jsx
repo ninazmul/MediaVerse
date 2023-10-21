@@ -7,7 +7,7 @@ import {
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const MediaCart = ({ media, medias, setMedia }) => {
+const MediaCart = ({ media, medias, setMedias }) => {
   const { _id, name, photo, brand, type, price, description, rating } = media;
 
   const navigate = useNavigate();
@@ -16,8 +16,7 @@ const MediaCart = ({ media, medias, setMedia }) => {
     navigate(`/media/${_id}`);
   };
 
-  const handleDelete = (_id) => {
-    console.log(_id);
+  const handleDelete = () => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -28,18 +27,21 @@ const MediaCart = ({ media, medias, setMedia }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/media/${_id}`, {
+        fetch(`http://localhost:5000/media/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your media has been deleted.", "success");
 
-              const remaining = medias.filter((med) => med._id !== _id);
-              setMedia(remaining);
+              // Filter out the deleted media from the medias array
+              const updatedMedias = medias.filter((med) => med._id !== _id);
+              setMedias(updatedMedias);
             }
+          })
+          .catch((error) => {
+            console.error("Error deleting media:", error);
           });
       }
     });
@@ -50,7 +52,7 @@ const MediaCart = ({ media, medias, setMedia }) => {
       <div className="card w-96 h-96 glass">
         <figure>
           <div className="">
-            <img src={photo} alt="car!" />
+            <img src={photo} alt="media" />
           </div>
         </figure>
         <div className="card-body">
@@ -60,23 +62,21 @@ const MediaCart = ({ media, medias, setMedia }) => {
             </div>
             <div className="flex text-red-500 text-2xl">
               <span onClick={() => handleLearnMoreClick()}>
-                <AiFillEdit></AiFillEdit>
+                <AiFillEdit />
               </span>
-              <button onClick={() => handleDelete(_id)}>
+              <button onClick={handleDelete}>
                 <span>
-                  <AiFillDelete></AiFillDelete>
+                  <AiFillDelete />
                 </span>
               </button>
-              <span className="text-2xl text-red-500">
-                <AiOutlineShoppingCart></AiOutlineShoppingCart>
-              </span>
+              
             </div>
           </div>
           <p className="flex justify-between items-center">
             <span>{brand}</span>
             <span className="flex items-center gap-1">
               {rating}
-              <AiFillStar className="text-red-500 text-xl "></AiFillStar>
+              <AiFillStar className="text-red-500 text-xl" />
             </span>
           </p>
           <p className="flex justify-between items-center">

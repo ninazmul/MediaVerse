@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const ServiceCart = ({ service }) => {
-  const { id, name, logo, industry } = service;
+  const { id, brand, logo, industry } = service;
   return (
     <div>
       <div className="card w-96 glass">
@@ -13,10 +13,10 @@ const ServiceCart = ({ service }) => {
           </div>
           <div>
             <div className="card-body">
-              <h2 className="card-title text-red-500">{name}</h2>
+              <h2 className="card-title text-red-500">{brand}</h2>
               <p>{industry}</p>
               <div className="card-actions justify-end">
-                <Link className="w-full" to={`/media/${id}`}>
+                <Link className="w-full" to={`/services/${brand}`}>
                   <p className="btn bg-red-500 w-full text-white">
                     See More!
                   </p>
